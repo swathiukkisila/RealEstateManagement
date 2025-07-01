@@ -4,7 +4,10 @@ import { Server } from "socket.io";
 
 const io = new Server({
   cors: {
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://real-estate-management-1rak-9uyvbafm2-swathiukkisilas-projects.vercel.app"
+    ],
   },
 });
 

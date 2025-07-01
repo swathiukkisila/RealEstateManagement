@@ -35,11 +35,11 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (!socket) {
-      const newSocket = io("http://localhost:5000");
+      const newSocket = io(import.meta.env.VITE_SOCKET_URL);
       setSocket(newSocket);
 
       newSocket.on("connect", () => {
-        console.log("✅ Connected to WebSocket server");
+        console.log("Connected to WebSocket server");
       });
 
       return () => {
