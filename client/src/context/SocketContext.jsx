@@ -1,0 +1,63 @@
+/*import { createContext, useContext, useEffect, useState } from "react";
+import { io } from "socket.io-client";
+import { AuthContext } from "./AuthContext";
+
+export const SocketContext = createContext();
+
+export const SocketContextProvider = ({ children }) => {
+  const { currentUser } = useContext(AuthContext);
+  const [socket, setSocket] = useState(null);
+
+  useEffect(() => {
+    setSocket(io("http://localhost:5000"));
+  }, []);
+
+  useEffect(() => {
+  currentUser && socket?.emit("newUser", currentUser.id);
+  }, [currentUser, socket]);
+
+  return (
+    <SocketContext.Provider value={{ socket }}>
+      {children}
+    </SocketContext.Provider>
+  );
+};*/
+
+import { createContext, useContext, useEffect, useState } from "react";
+import { io } from "socket.io-client";
+import { AuthContext } from "./AuthContext";
+
+export const SocketContext = createContext();
+
+export const SocketContextProvider = ({ children }) => {
+  const { currentUser } = useContext(AuthContext);
+  const [socket, setSocket] = useState(null);
+
+  useEffect(() => {
+    if (!socket) {
+      const newSocket = io("http://localhost:5000");
+      setSocket(newSocket);
+
+      newSocket.on("connect", () => {
+        console.log("✅ Connected to WebSocket server");
+      });
+
+      return () => {
+        newSocket.disconnect();
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    if (currentUser && socket) {
+      socket.emit("newUser", currentUser.id);
+      console.log("📡 Registered user ${currentUser.id} on socket");
+    }
+  }, [currentUser, socket]);
+
+  return (
+    <SocketContext.Provider value={{ socket }}>
+      {children}
+    </SocketContext.Provider>
+  );
+};

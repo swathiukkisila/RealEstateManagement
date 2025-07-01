@@ -1,0 +1,218 @@
+@import "../../responsive.scss";
+
+.aboutSection {
+  height: 100%;
+  overflow: scroll;
+
+  .aboutHeader {
+    position: relative;
+    background: url("/houseimage4.jpg") no-repeat center center/cover;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    overflow: hidden;
+    margin-bottom: 50px;
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background: rgba(87, 83, 83, 0.6);
+    }
+
+    .content {
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      z-index: 2;
+
+      h1 {
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+
+        @include sm {
+          font-size: 32px;
+        }
+      }
+
+      p {
+        font-size: 18px;
+
+        @include sm {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .aboutMainsection {
+    margin-bottom: 50px;
+
+    .mainrow {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+
+      @include sm {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .maincard {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        img {
+          height: 250px;
+          width: 250px;
+
+          @include sm {
+            height: 200px;
+            width: 200px;
+          }
+        }
+
+        .desc {
+          text-align: center;
+          color: darkgray;
+          line-height: 20px;
+          word-spacing: 0.8px;
+          padding: 0 10px;
+        }
+      }
+    }
+  }
+
+  .storySection {
+    background-color: rgba(211, 211, 211, 0.904);
+    padding: 20px 30px;
+    margin-bottom: 50px;
+
+    h2 {
+      text-align: center;
+      padding-bottom: 20px;
+    }
+
+    p {
+      max-width: 800px;
+      line-height: 30px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 10px;
+    }
+  }
+
+  .heading {
+    margin-bottom: 20px;
+    font-size: 30px;
+    text-align: center;
+
+    @include sm {
+      font-size: 24px;
+    }
+  }
+
+  .row {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+      min-width: 280px;
+      border-radius: 10px;
+      padding: 20px;
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 5px;
+      }
+    }
+  }
+
+  .aboutFooter {
+    margin-top: 50px;
+    position: relative;
+    background: url("/homeimage2.jpg") no-repeat center center/cover;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    overflow: hidden;
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background: rgba(87, 83, 83, 0.6);
+    }
+
+    .footerContent {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+      padding: 0 20px;
+
+      h1 {
+        font-size: 32px;
+
+        @include sm {
+          font-size: 24px;
+        }
+      }
+
+      p {
+        font-size: 16px;
+
+        @include sm {
+          font-size: 14px;
+        }
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: yellow;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+
+        @include sm {
+          padding: 8px 16px;
+        }
+      }
+    }
+  }
+}

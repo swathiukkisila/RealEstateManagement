@@ -1,0 +1,30 @@
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Arial", sans-serif;
+      font-size: 1rem;
+      color: black;
+  
+      .checkmark {
+        font-size: 1.8rem;
+        color: #61cea6;
+      }
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .feature-list {
+      text-align: left;
+    }
+  }
+  
