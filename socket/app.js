@@ -8,8 +8,11 @@ const io = new Server({
       "http://localhost:5173",
       "https://real-estate-management-1rak-9uyvbafm2-swathiukkisilas-projects.vercel.app"
     ],
+    methods: ["GET", "POST"],
+    credentials: true,
   },
 });
+
 
 let onlineUsers = [];
 
