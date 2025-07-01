@@ -1,5 +1,3 @@
-
-
 import { createContext, useContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import { AuthContext } from "./AuthContext";
@@ -12,15 +10,20 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (!socket) {
-      const newSocket = io(import.meta.env.VITE_SOCKET_URL);
+      const newSocket = io(import.meta.env.VITE_SOCKET_URL, {
+        withCredentials: true,
+        transports: ["websocket"],
+      });
+
       setSocket(newSocket);
 
       newSocket.on("connect", () => {
-        console.log("Connected to WebSocket server");
+        console.log("✅ Connected to WebSocket server");
       });
 
       return () => {
         newSocket.disconnect();
+        console.log("🔌 Socket disconnected");
       };
     }
   }, []);
@@ -29,7 +32,6 @@ export const SocketContextProvider = ({ children }) => {
     if (currentUser && socket) {
       socket.emit("newUser", currentUser.id);
       console.log(`📡 Registered user ${currentUser.id} on socket`);
-
     }
   }, [currentUser, socket]);
 
